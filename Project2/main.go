@@ -70,6 +70,9 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 	// Split the input separate the command name and the command arguments.
 	args := strings.Split(input, " ")
 	name, args := args[0], args[1:]
+	
+	// Add command to history
+	addHistory(input)
 
 	// Check for built-in commands.
 	// New builtin commands should be added here. Eventually this should be refactored to its own func.
@@ -85,6 +88,10 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 		return nil
 	case "pwd":
 		return builtins.Pwd(args...)
+	case "history":
+		listHistory()
+		return nil
+	}
 	case "exit":
 		exit <- struct{}{}
 		return nil
