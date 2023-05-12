@@ -72,7 +72,7 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 	name, args := args[0], args[1:]
 	
 	// Add command to history
-	addHistory(input)
+	addHistory(input);
 
 	// Check for built-in commands.
 	// New builtin commands should be added here. Eventually this should be refactored to its own func.
@@ -88,17 +88,20 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 		return nil
 	case "pwd":
 		return builtins.Pwd(args...)
+	case "mkdir":
+		return builtins.Mkdir(args...)
+	case "rm":
+		return builtins.Rm(args...)
 	case "history":
 		listHistory()
 		return nil
-	}
+	
 	case "exit":
 		exit <- struct{}{}
 		return nil
 	}
-
 	return executeCommand(name, args...)
-}
+}//end of func handleInput
 
 func executeCommand(name string, arg ...string) error {
 	// Otherwise prep the command
