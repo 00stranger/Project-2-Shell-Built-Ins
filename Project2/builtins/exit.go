@@ -8,7 +8,7 @@ import (
     "strings"
 )
 
-func main() {
+func exit() {
     reader := bufio.NewReader(os.Stdin)
 
     for {
