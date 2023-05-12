@@ -6,11 +6,11 @@ import (
 
 var history []string
 
-func addHistory(cmd string) {
+func AddHistory(cmd string) {
 	history = append(history, cmd)
 }
 
-func listHistory() {
+func ListHistory() {
 	for i, cmd := range history {
 		fmt.Printf("%d: %s\n", i+1, cmd)
 		return;
