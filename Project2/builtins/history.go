@@ -1,3 +1,14 @@
+package builtins
+
+import (
+	"bytes"
+	"errors"
+	"fmt"
+	"os"
+	"strings"
+	"testing"
+)
+
 var history []string
 
 func addHistory(cmd string) {
