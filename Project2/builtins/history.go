@@ -11,9 +11,9 @@ func AddHistory(cmd string) {
 }
 
 func ListHistory() {
-	for i, cmd := range history {
-		fmt.Printf("%d: %s\n", i+1, cmd)
-		return;
-	}
+    for i, cmd := range history {
+        fmt.Printf("%d: %s\n", i+1, cmd)
+    }
 }
+
 
